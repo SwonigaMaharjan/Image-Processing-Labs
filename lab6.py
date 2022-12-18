@@ -1,0 +1,15 @@
+import cv2
+from matplotlib import pyplot as plt
+img1=cv2.imread('original image.png', 0)
+img2=cv2.imread('low light.jpg', 0)
+img3=cv2.imread('dark image.jpg', 0)
+hist1=cv2.calcHist([img1], [0], None, [256], [0, 256])
+hist2=cv2.calcHist([img2], [0], None, [256], [0, 256])
+hist3=cv2.calcHist([img3], [0], None, [256], [0, 256])
+plt.subplot(231), plt.imshow(img1), plt.title('original image')
+plt.subplot(232), plt.imshow(img2), plt.title('low light')
+plt.subplot(233), plt.imshow(img3), plt.title('dark image')
+plt.subplot(234), plt.plot(hist1), plt.title('original hist')
+plt.subplot(235), plt.plot(hist2), plt.title('low hist')
+plt.subplot(236), plt.plot(hist3), plt.title('dark hist')
+plt.show()
